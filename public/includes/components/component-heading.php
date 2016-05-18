@@ -122,6 +122,14 @@ class AesopChapterHeadingComponent {
 		} else {
 		   $contentClass = apply_filters( 'aesop_chapter_scroll_container', '.entry-content' );
 		}
+		
+		$arrowKeys = apply_filters( 'aesop_chapter_arrow_keys', true );
+		
+		if ( true === $arrowKeys ) {
+			$arrowKeys = 'true';
+		} else {
+			$arrowKeys = 'false';
+		}
 /**/
 		// filterabl content header class
 		$contentHeaderClass = apply_filters( 'aesop_chapter_scroll_nav', '.aesop-entry-header' );
@@ -136,7 +144,7 @@ class AesopChapterHeadingComponent {
 					
 					jQuery(contentClass).scrollNav({
 					    sections: '.aesop-article-chapter-wrap',
-					    arrowKeys: true,
+					    arrowKeys: <?php echo esc_attr( $arrowKeys ); ?>,
 					    insertTarget: '<?php echo esc_attr( $contentHeaderClass );?>',
 					    insertLocation: 'appendTo',
 					    showTopLink: true,
